@@ -20,7 +20,7 @@ const About = () => {
                     <div className="sm:text-right pb-8 pl-4">
                         <SplitText
                             text="About Me"
-                            className="text-4xl sm:text-7xl font-bold inline border-b-4 border-[#be3e46] cursor-target"
+                            className="text-4xl sm:text-7xl font-bold inline border-b-4 border-yellow-600 cursor-target"
                             delay={100}
                             duration={2}
                             ease="elastic.out(1,0.3)"

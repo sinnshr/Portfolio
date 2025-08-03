@@ -12,7 +12,7 @@ const Home = () => {
             {/* DotGrid background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <DotGrid
-                    dotSize={7}
+                    dotSize={10}
                     gap={15}
                     baseColor="#271E37"
                     activeColor="#5227FF"
@@ -49,24 +49,23 @@ const Home = () => {
                     style={{ display: 'inline-block', minWidth: '19ch' }}
                     className="text-4xl sm:text-7xl font-normal text-[#ddcabf] name drop-shadow-lg"
                 />
-                <p className="text-xl sm:text-5xl font-bold text-[#b98260] drop-shadow-md">I'm a Frontend Developer.</p>
-                {/* <p className="text-gray-400 py-4 max-w-[700px] drop-shadow">
-                    I'm a passionate Frontend Developer who builds user-friendly, responsive, and visually appealing websites.
-                    I specialize in turning designs into clean, interactive code using HTML, CSS, JavaScript, and modern frameworks like React.
-                </p> */}
+                <p className="text-xl sm:text-5xl font-bold text-yellow-600 drop-shadow-md">I'm a Frontend Developer.</p>
+                <p className="text-[#be3e46] text-center">
+                    <span className="text-5xl relative" style={{ right: '3.05em',top: '-0.1em' }}>^</span>
+                    <span className="text-lg relative" style={{ right: '10.15em', top: '-0.2em' }}>future</span>
+                </p>
+
                 {/* Projects Button */}
                 <div>
-                    <button className="text-white rounded-full py-3 my-2 text-center items-center justify-center
-                    group hover:border-[#be3e46] transition-transform duration-300 hover:scale-110 hover:font-semibold cursor-target">
+                    <button className="text-white rounded-full py-3 text-center items-center justify-center
+                    group hover:border-[#be3e46] transition-transform duration-300 hover:scale-110 hover:font-semibold cursor-target mt-[-4rem]">
                         <GlassSurface width={200}
                             height={50}
                             borderRadius={24}>
-
                             View Projects
                             <span className="group-hover:-mt-2 group-hover:rotate-90 duration-300">
                                 <MdArrowForward className="ml-3 " />
                             </span>
-
                         </GlassSurface>
                     </button>
                 </div>

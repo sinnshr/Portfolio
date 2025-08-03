@@ -42,7 +42,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full h-screen text-gray-300 z-0 relative overflow-hidden">
+    <div name="contact" className="w-full h-screen text-gray-300 z-0 relative overflow-hidden">
       {/* Floating Particles */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(50)].map((_, index) => {
@@ -105,7 +105,7 @@ const Contact = () => {
                 }, 1500);
               });
             }}
-            className="px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-600 hover:text-purple-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400 cursor-target text-3xl"
+            className="px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-yellow-600 hover:text-purple-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400 cursor-target text-3xl"
             type="button"
           >
             Copy
