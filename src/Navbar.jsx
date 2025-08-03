@@ -3,6 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 // import Logo from './assets/logo.png';
 // import Social from './Social'
 import GlassSurface from './animations/GlassSurface';
+import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -16,11 +17,52 @@ const Navbar = () => {
         borderRadius={24}
         className="hidden md:flex cursor-target">
         <ul className="hidden md:flex">
-          <li >Home</li>
-          <li>About</li>
-          <li>Skills</li>
-          <li>Projects</li>
-          <li>Contact</li>
+          <li >
+            {/* react-scroll Component */}
+            <Link
+              to="home"
+              duration={500}
+              smooth={true}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="about"
+              duration={500}
+              smooth={true}
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="skills"
+              duration={500}
+              smooth={true}
+            >
+              Skills
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="projects"
+              duration={500}
+              smooth={true}
+            >
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="contact"
+              duration={500}
+              smooth={true}
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
       </GlassSurface>
 
