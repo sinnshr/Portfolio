@@ -2,6 +2,7 @@ import { MdArrowForward } from "react-icons/md";
 import TextType from './animations/TextType';
 import GlassSurface from './animations/GlassSurface';
 import DotGrid from './animations/DotGrid';
+import { Link } from 'react-scroll';
 
 const Home = () => {
     return (
@@ -51,7 +52,7 @@ const Home = () => {
                 />
                 <p className="text-xl sm:text-5xl font-bold text-yellow-600 drop-shadow-md">I'm a Frontend Developer.</p>
                 <p className="text-[#be3e46] text-center">
-                    <span className="text-5xl relative" style={{ right: '3.05em',top: '-0.1em' }}>^</span>
+                    <span className="text-5xl relative" style={{ right: '3.05em', top: '-0.1em' }}>^</span>
                     <span className="text-lg relative" style={{ right: '10.15em', top: '-0.2em' }}>future</span>
                 </p>
 
@@ -59,14 +60,20 @@ const Home = () => {
                 <div>
                     <button className="text-white rounded-full py-3 text-center items-center justify-center
                     group hover:border-[#be3e46] transition-transform duration-300 hover:scale-110 hover:font-semibold cursor-target mt-[-4rem]">
-                        <GlassSurface width={200}
-                            height={50}
-                            borderRadius={24}>
-                            View Projects
-                            <span className="group-hover:-mt-2 group-hover:rotate-90 duration-300">
-                                <MdArrowForward className="ml-3 " />
-                            </span>
-                        </GlassSurface>
+                        <Link
+                            to="projects"
+                            duration={500}
+                            smooth={true}
+                        >
+                            <GlassSurface width={200}
+                                height={50}
+                                borderRadius={24}>
+                                View Projects
+                                <span className="group-hover:-mt-2 group-hover:rotate-90 duration-300">
+                                    <MdArrowForward className="ml-3 " />
+                                </span>
+                            </GlassSurface>
+                        </Link>
                     </button>
                 </div>
             </div>
