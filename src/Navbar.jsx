@@ -72,13 +72,43 @@ const Navbar = () => {
       </div>
 
       {/* Expanded Ham Menu */}
-      <div className={!nav ? "hidden" : "absolute top-0 left-0 w-full h-screen bg-transparent flex flex-col justify-center items-center"}>
+      <div className={!nav ? "hidden" : "absolute top-0 left-0 w-full h-screen bg-[#060010] flex flex-col justify-center items-center"}>
         <ul>
-          <li className="py-6 text-2xl">Home</li>
-          <li className="py-6 text-2xl">About</li>
-          <li className="py-6 text-2xl">Skills</li>
-          <li className="py-6 text-2xl">Projects</li>
-          <li className="py-6 text-2xl">Contact</li>
+          <li className="py-6 text-2xl cursor-target"><Link
+            to="home"
+            duration={500}
+            smooth={true}
+          >
+            Home
+          </Link></li>
+          <li className="py-6 text-2xl cursor-target"><Link
+            to="about"
+            duration={500}
+            smooth={true}
+          >
+            About
+          </Link></li>
+          <li className="py-6 text-2xl cursor-target"><Link
+            to="skills"
+            duration={500}
+            smooth={true}
+          >
+            Skills
+          </Link></li>
+          <li className="py-6 text-2xl cursor-target"><Link
+            to="projects"
+            duration={500}
+            smooth={true}
+          >
+            Projects
+          </Link></li>
+          <li className="py-6 text-2xl cursor-target"><Link
+            to="contact"
+            duration={500}
+            smooth={true}
+          >
+            Contact
+          </Link></li>
         </ul>
       </div>
 
