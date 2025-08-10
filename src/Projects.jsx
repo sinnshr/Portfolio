@@ -7,7 +7,7 @@ const Projects = () => {
     return (
         <div name="projects" className="w-full h-screen flex items-center justify-center px-12 sm:px-24">
             <div className="w-3/5 h-[80vh] flex items-center justify-center relative">
-                <div className="w-full h-full relative z-10 rounded-3xl border-gray-500 border-opacity-70 cursor-target">
+                <div className="w-full h-full relative z-10 rounded-3xl border-gray-500 border-opacity-70 cursor-target cursor-default">
                     <div className="pointer-events-none absolute inset-0 z-0 transition duration-300" />
                     {/* "The End" text positioned below stack items */}
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-5">
@@ -31,7 +31,7 @@ const Projects = () => {
                                             <SiTailwindcss className="text-4xl text-yellow-600" />
                                         </div>
                                         <button className="px-4 py-2 bg-yellow-600 text-white rounded-full">
-                                            View On GitHub
+                                            <a href="https://github.com/sinnshr/Vira" target='_Blank'>View On GitHub</a>
                                         </button>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@ const Projects = () => {
                                             <SiTailwindcss className="text-4xl text-yellow-600" />
                                         </div>
                                         <button className="px-4 py-2 bg-yellow-600 text-white rounded-full">
-                                            View On GitHub
+                                            <a href="https://github.com/sinnshr/Focus-App" target='_Blank'>View On GitHub</a>
                                         </button>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@ const Projects = () => {
                                             <SiSolidity className="text-4xl text-yellow-600" />
                                         </div>
                                         <button className="px-4 py-2 bg-yellow-600 text-white rounded-full">
-                                            View On GitHub
+                                            <a href="https://github.com/sinnshr/Foundry-FundMe" target='_Blank'>View On GitHub</a>
                                         </button>
                                     </div>
                                 </div>
