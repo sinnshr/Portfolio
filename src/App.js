@@ -6,6 +6,7 @@ import Projects from "./Projects";
 import Skills from "./Skills";
 import Contact from './Contact';
 import Footer from './Footer';
+import ParticlesBg from './animations/ParticlesBg';
 
 function App() {
     const mainRef = useRef(null);
@@ -44,8 +45,12 @@ function App() {
                 <Skills />
             </div>
             <Projects />
-            <Contact />
-            <Footer />
+
+            {/* Shared Particles Background */}
+            <ParticlesBg>
+                <Contact />
+                <Footer />
+            </ParticlesBg>
         </div>
     );
 }
