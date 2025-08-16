@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div
             name="home"
-            className="w-full min-h-screen flex items-center justify-center pt-10 relative overflow-hidden"
+            className="w-full min-h-screen flex items-center justify-center pt-10 relative overflow-hidden px-4 sm:px-6"
         >
             {/* DotGrid background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
@@ -38,20 +38,33 @@ const Home = () => {
             </div>
 
             {/* Start Home Section  */}
-            <div className="max-w-[1000px] mx-auto pl-10 flex flex-col justify-center text-center relative z-10">
-                <p className="text-[#be3e46] text-3xl font-bold drop-shadow-md">Hi, I'm</p>
-                <TextType
-                    text={"SAJEDE SHIRKHANI"}
-                    typingSpeed={75}
-                    pauseDuration={1500}
-                    showCursor={true}
-                    cursorCharacter="|"
-                    cursorClassName="cursor text-5xl font-bold"
-                    style={{ display: 'inline-block', minWidth: '19ch' }}
-                    className="text-4xl sm:text-7xl font-normal text-[#ddcabf] name drop-shadow-lg"
-                />
-                <p className="text-xl sm:text-5xl font-bold text-yellow-600 drop-shadow-md">I'm a Frontend Developer.</p>
-                <p className="text-[#be3e46] text-center">
+            <div className="max-w-[1000px] mx-auto flex flex-col justify-center text-center relative z-10">
+                <p className="text-[#be3e46] text-2xl sm:text-3xl font-bold drop-shadow-md mb-2 sm:mb-4">Hi, I'm</p>
+                <span className="block sm:hidden">
+                    <TextType
+                        text={"SAJEDE\nSHIRKHANI"}
+                        typingSpeed={75}
+                        pauseDuration={1500}
+                        showCursor={true}
+                        cursorCharacter="|"
+                        cursorClassName="cursor text-4xl font-bold"
+                        className="text-5xl font-normal text-[#ddcabf] name drop-shadow-lg mb-2"
+                    />
+                </span>
+                <span className="hidden sm:block">
+                    <TextType
+                        text={"SAJEDE SHIRKHANI"}
+                        typingSpeed={75}
+                        pauseDuration={1500}
+                        showCursor={true}
+                        cursorCharacter="|"
+                        cursorClassName="cursor sm:text-5xl font-bold"
+                        style={{ display: 'inline-block', minWidth: '19ch' }}
+                        className="sm:text-6xl md:text-7xl font-normal text-[#ddcabf] name drop-shadow-lg"
+                    />
+                </span>
+                <p className="text-2xl sm:text-4xl md:text-5xl font-bold text-yellow-600 drop-shadow-md">I'm a Frontend Developer.</p>
+                <p className="text-[#be3e46] text-center hidden md:block">
                     <span className="text-5xl relative" style={{ right: '3.05em', top: '-0.1em' }}>^</span>
                     <span className="text-lg relative" style={{ right: '10.15em', top: '-0.2em' }}>future</span>
                 </p>
@@ -59,7 +72,7 @@ const Home = () => {
                 {/* Projects Button */}
                 <div>
                     <button className="text-white rounded-full py-3 text-center items-center justify-center
-                    group hover:border-[#be3e46] transition-transform duration-300 hover:scale-110 hover:font-semibold cursor-target mt-[-4rem]">
+                    group hover:border-[#be3e46] transition-transform duration-300 hover:scale-110 hover:font-semibold cursor-target md:mt-[-4rem] mt-5">
                         <Link
                             to="projects"
                             duration={500}
