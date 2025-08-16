@@ -13,7 +13,7 @@ const Home = () => {
             {/* DotGrid background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <DotGrid
-                    dotSize={10}
+                    dotSize={17}
                     gap={15}
                     baseColor="#271E37"
                     activeColor="#5227FF"

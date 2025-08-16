@@ -10,7 +10,7 @@ const Navbar = () => {
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-transparent text-white z-20">
+    <div className="fixed w-full h-[80px] flex justify-center items-center px-4 bg-transparent text-white z-20">
       {/* Main Menu */}
       <GlassSurface width={480}
         height={50}
