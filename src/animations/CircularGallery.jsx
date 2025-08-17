@@ -32,41 +32,50 @@ function autoBind(instance) {
     });
 }
 
-function createTextTexture(gl, text, font = "500px", color = "black") {
+function createTextTexture(gl, text, fontSize = "500px", color = "black") {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
-    context.font = `${font} Inter`;
+
+    // Set font with proper weight and family
+    const fontString = `600 ${fontSize} Inter, Arial, sans-serif`;
+    context.font = fontString;
+
     const metrics = context.measureText(text);
     const textWidth = Math.ceil(metrics.width);
-    const textHeight = Math.ceil(parseInt(font, 10) * 1.2);
+    const textHeight = Math.ceil(parseInt(fontSize, 10) * 1.2);
     canvas.width = textWidth + 100;
     canvas.height = textHeight + 20;
-    context.font = font;
+
+    // Set font again after canvas resize
+    context.font = fontString;
     context.fillStyle = color;
     context.textBaseline = "middle";
     context.textAlign = "center";
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillText(text, canvas.width / 2, canvas.height / 2);
+
     const texture = new Texture(gl, { generateMipmaps: false });
     texture.image = canvas;
     return { texture, width: canvas.width, height: canvas.height };
 }
 
 class Title {
-    constructor({ gl, plane, renderer, text, textColor = "#545050", font = "500px Inter" }) {
+    constructor({ gl, plane, renderer, text, textColor = "#545050", fontSize = "500px" }) {
         autoBind(this);
         this.gl = gl;
         this.plane = plane;
         this.renderer = renderer;
         this.text = text;
         this.textColor = textColor;
-        this.font = font;
+        this.fontSize = fontSize;
         this.createMesh();
     }
     createMesh() {
-        const { texture, width, height } = createTextTexture(this.gl, this.text, this.font, this.textColor);
+        const { texture, width, height } = createTextTexture(this.gl, this.text, this.fontSize, this.textColor);
         const geometry = new Plane(this.gl);
         const program = new Program(this.gl, {
+            depthTest: false,
+            depthWrite: false,
             vertex: `
         attribute vec3 position;
         attribute vec2 uv;
@@ -92,9 +101,17 @@ class Title {
             transparent: true,
         });
         this.mesh = new Mesh(this.gl, { geometry, program });
+
+        // Calculate text size based on font size
+        const fontSize = parseInt(this.fontSize, 10);
+        const baseFontSize = 500; // Base font size for scaling
+        const scaleFactor = fontSize / baseFontSize;
+
         const aspect = width / height;
-        const textHeight = this.plane.scale.y * 0.15;
+        const baseTextHeight = this.plane.scale.y * 0.15;
+        const textHeight = baseTextHeight * scaleFactor;
         const textWidth = textHeight * aspect;
+
         this.mesh.scale.set(textWidth, textHeight, 1);
         this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
         this.mesh.setParent(this.plane);
@@ -116,7 +133,7 @@ class Media {
         bend,
         textColor,
         borderRadius = 0,
-        font,
+        fontSize,
     }) {
         this.extra = 0;
         this.geometry = geometry;
@@ -132,7 +149,7 @@ class Media {
         this.bend = bend;
         this.textColor = textColor;
         this.borderRadius = borderRadius;
-        this.font = font;
+        this.fontSize = fontSize;
         this.createShader();
         this.createMesh();
         this.createTitle();
@@ -226,7 +243,7 @@ class Media {
             renderer: this.renderer,
             text: this.text,
             textColor: this.textColor,
-            // font: this.font,
+            fontSize: this.fontSize,
         });
     }
     update(scroll, direction) {
@@ -297,7 +314,7 @@ class App {
             bend,
             textColor = "#ffffff",
             borderRadius = 0,
-            font = "600 500px Inter",
+            fontSize = "500px",
             scrollSpeed = 2,
             scrollEase = 0.05,
             height = 600,
@@ -313,7 +330,7 @@ class App {
         this.createScene();
         this.onResize();
         this.createGeometry();
-        this.createMedias(items, bend, textColor, borderRadius, font);
+        this.createMedias(items, bend, textColor, borderRadius, fontSize);
         this.update();
         this.addEventListeners();
         this.customHeight = height;
@@ -338,7 +355,7 @@ class App {
             widthSegments: 100,
         });
     }
-    createMedias(items, bend = 1, textColor, borderRadius, font) {
+    createMedias(items, bend = 1, textColor, borderRadius, fontSize) {
         const defaultItems = [
             { image: htmlImg, text: "HTML5" },
             { image: cssImg, text: "CSS3" },
@@ -368,7 +385,7 @@ class App {
                 bend,
                 textColor,
                 borderRadius,
-                font,
+                fontSize,
             });
         });
     }
@@ -464,17 +481,17 @@ export default function CircularGallery({
     bend = 3,
     textColor = "#ffffff",
     borderRadius = 0.05,
-    font = "600 500px Inter",
+    fontSize = "500px",
     scrollSpeed = 2,
     scrollEase = 0.05,
     height = 600,
 }) {
     const containerRef = useRef(null);
     useEffect(() => {
-        const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, height });
+        const app = new App(containerRef.current, { items, bend, textColor, borderRadius, fontSize, scrollSpeed, scrollEase, height });
         return () => {
             app.destroy();
         };
-    }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, height]);
+    }, [items, bend, textColor, borderRadius, fontSize, scrollSpeed, scrollEase, height]);
     return <div className="w-full overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef} style={{ height }} />;
 }
