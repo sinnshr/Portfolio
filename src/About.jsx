@@ -20,7 +20,7 @@ const About = () => {
                     <div className="sm:text-right pb-8 pl-4">
                         <SplitText
                             text="About Me"
-                            className="text-4xl sm:text-7xl font-bold inline border-b-4 border-yellow-600 cursor-target"
+                            className="text-5xl md:text-7xl font-bold inline border-b-4 border-yellow-600 cursor-target whitespace-nowrap"
                             delay={100}
                             duration={2}
                             ease="elastic.out(1,0.3)"
@@ -49,7 +49,7 @@ const About = () => {
                         />
                         <p>year old Software Engineering Student based in Mashhad, Iran.</p>
                     </div>
-                    <div className="text-2xl mb-8">
+                    <div className="text-[1.4rem] sm:text-2xl mb-8">
                         <div className="leading-relaxed">
                             <span>
                                 I specialize in Frontend Engineering, focusing on building{' '}
