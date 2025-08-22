@@ -15,7 +15,7 @@ const Navbar = () => {
       <GlassSurface width={480}
         height={50}
         borderRadius={24}
-        className="hidden md:flex cursor-target">
+        className="hidden md:flex cursor-target cursor-pointer">
         <ul className="hidden md:flex">
           <li >
             {/* react-scroll Component */}
@@ -67,8 +67,8 @@ const Navbar = () => {
       </GlassSurface>
 
       {/* Hamburger Menu Button */}
-      <div 
-        onClick={handleClick} 
+      <div
+        onClick={handleClick}
         className="md:hidden z-20 cursor-pointer p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
         style={{ position: 'fixed', top: '1rem', left: '1.2rem' }}
       >

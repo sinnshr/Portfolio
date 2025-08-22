@@ -47,38 +47,21 @@ body {
     position: relative;
 }
 
-/* Particle floating animation */
-@keyframes float {
-    0%,
-    100% {
-        transform:
-            translate(0, 0) scale(1);
-        opacity: 0.3;
-    }
-
-    25% {
-        transform:
-            translate(calc(8px * var(--dir-x, 1)),
-                calc(-8px * var(--dir-y, 1))) scale(1.03);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform:
-            translate(calc(12px * var(--dir-x, 1)),
-                calc(-12px * var(--dir-y, 1))) scale(1.06);
-        opacity: 0.8;
-    }
-
-    75% {
-        transform:
-            translate(calc(8px * var(--dir-x, 1)),
-                calc(-8px * var(--dir-y, 1))) scale(1.03);
-        opacity: 0.5;
-    }
+/* Smooth scrolling for better mobile experience */
+html {
+    scroll-behavior: smooth;
 }
 
-/* Performance optimization */
-.absolute.bg-purple-400\/30 {
-    will-change: transform, opacity;
+/* Prevent horizontal overflow on mobile */
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    .cursor {
+        pointer-events: none;
+        touch-action: none;
+        cursor: none;
+    }
 }

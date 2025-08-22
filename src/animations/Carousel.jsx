@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { FaPhp, FaReact, FaChevronLeft, FaChevronRight, faEthereum, FaEthereum } from "react-icons/fa";
+import { FaPhp, FaReact, FaChevronLeft, FaChevronRight, FaEthereum } from "react-icons/fa";
 import { SiJavascript, SiTailwindcss, SiSolidity } from "react-icons/si";
 
 const DEFAULT_ITEMS = [
