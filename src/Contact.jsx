@@ -9,15 +9,22 @@ const Contact = () => {
           spinDuration={2}
           hideDefaultCursor={true}
         />
-        <h1 className="text-6xl sm:text-7xl font-bold mb-12 text-center text-white drop-shadow-lg tracking-tight cursor-target">
+        <h1 className="text-5xl sm:text-7xl font-bold mb-12 text-center text-white drop-shadow-lg tracking-tight cursor-target">
           Contact <span className="text-purple-400">Me</span>
         </h1>
-        <div className="flex flex-row items-center gap-8 bg-slate-800/60 rounded-xl px-16 py-10 shadow-xl backdrop-blur-md">
+        <div className="flex flex-row items-center gap-4 sm:gap-8 bg-slate-800/60 rounded-xl p-5 sm:px-16 sm:py-10 shadow-xl backdrop-blur-md">
           <a
             href="mailto:sajedeshirkhani22@gmail.com"
-            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out cursor-target focus:outline-none focus:ring-2 focus:ring-purple-400 text-3xl"
+            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out cursor-target focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl hidden sm:flex"
           >
             Click
+          </a>
+          {/* Changed button for small screens */}
+          <a
+            href="mailto:sajedeshirkhani22@gmail.com"
+            className="pointer-events-auto px-10 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out cursor-target focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl flex sm:hidden"
+          >
+            Tap
           </a>
           <span className="text-gray-400 font-medium text-2xl">or</span>
           <button
@@ -39,7 +46,7 @@ const Contact = () => {
                 }, 1500);
               });
             }}
-            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-yellow-600 hover:text-purple-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400 cursor-target text-3xl"
+            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-yellow-600 hover:text-purple-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400 cursor-target text-2xl sm:text-3xl"
             type="button"
           >
             Copy
