@@ -61,6 +61,21 @@ export default function Carousel({
     const [isHovered, setIsHovered] = useState(false);
     const [isResetting, setIsResetting] = useState(false);
 
+    // Responsive height for small screens
+    const [cardHeight, setCardHeight] = useState("345px");
+    useEffect(() => {
+        function updateHeight() {
+            if (window.innerWidth < 640) {
+                setCardHeight("470px");
+            } else {
+                setCardHeight("345px");
+            }
+        }
+        updateHeight();
+        window.addEventListener("resize", updateHeight);
+        return () => window.removeEventListener("resize", updateHeight);
+    }, []);
+
     const containerRef = useRef(null);
     useEffect(() => {
         if (pauseOnHover && containerRef.current) {
@@ -150,7 +165,7 @@ export default function Carousel({
                         setCurrentIndex((prev) => Math.max(prev - 1, 0));
                     }
                 }}
-                className={`absolute left-[-60px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-md flex items-center justify-center transition-all duration-200 group ${!loop && currentIndex === 0
+                className={`absolute left-[-60px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-md hidden sm:flex items-center justify-center transition-all duration-200 group ${!loop && currentIndex === 0
                     ? 'bg-white/5 border-white/10 text-white/30 cursor-not-allowed'
                     : 'text-white/80 hover:text-white hover:scale-105 cursor-target'
                     }`}
@@ -207,7 +222,7 @@ export default function Carousel({
                                     } overflow-hidden cursor-grab active:cursor-grabbing hover:shadow-xl transition-shadow duration-300`}
                                 style={{
                                     width: itemWidth,
-                                    height: round ? itemWidth : "345px",
+                                    height: round ? itemWidth : cardHeight,
                                     rotateY: rotateY,
                                     ...(round && { borderRadius: "50%" }),
                                 }}
@@ -221,7 +236,7 @@ export default function Carousel({
                                             return (
                                                 <IconComponent
                                                     key={iconIndex}
-                                                    className={`text-3xl ${iconData.color} hover:scale-110 transition-transform duration-200 cursor-pointer mb-4`}
+                                                    className={`text-3xl ${iconData.color} hover:scale-110 transition-transform duration-200 cursor-pointer`}
                                                 />
                                             );
                                         })}
@@ -229,7 +244,7 @@ export default function Carousel({
                                 </div>
 
                                 {/* Content Section */}
-                                <div className="flex-1 p-5 pt-2 pb-16">
+                                <div className="flex-1 flex justify-start flex-col items-baseline px-5 mt-[23px]">
                                     <div className="mb-3 font-bold text-[1.8rem] text-white">
                                         {item.title}
                                     </div>
@@ -242,7 +257,7 @@ export default function Carousel({
                                         href={item.githubUrl}
                                         target='_blank'
                                         rel="noopener noreferrer"
-                                        className="inline-block px-6 py-2 mb-4 bg-yellow-600 text-white rounded-full font-normal hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 transform hover:scale-105 shadow-lg cursor-target"
+                                        className="inline-block px-8 sm:px-6 py-3 sm:py-1.5 mb-4 bg-yellow-600 text-white rounded-full font-bold sm:font-normal whitespace-nowrap hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 transform hover:scale-105 shadow-lg cursor-target text-lg sm:text-[16px]"
                                     >
                                         View On GitHub
                                     </a>
@@ -287,7 +302,7 @@ export default function Carousel({
                         setCurrentIndex((prev) => Math.min(prev + 1, carouselItems.length - 1));
                     }
                 }}
-                className={`absolute right-[-60px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-md flex items-center justify-center transition-all duration-200 group ${!loop && currentIndex === carouselItems.length - 1
+                className={`absolute right-[-60px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-md hidden sm:flex items-center justify-center transition-all duration-200 group ${!loop && currentIndex === carouselItems.length - 1
                     ? 'bg-white/5 border-white/10 text-white/30 cursor-not-allowed'
                     : 'text-white/80 hover:text-white hover:scale-105 cursor-target'
                     }`}
