@@ -34,25 +34,29 @@ const About = () => {
                     </div>
                 </div>
                 <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4">
-                    <div className="sm:text-right text-3xl sm:text-4xl font-medium">
-                        <p className='inline'>
-                            I'm a&nbsp;
-                        </p>
-                        <CountUp
-                            from={0}
-                            to={20}
-                            separator=","
-                            direction="up"
-                            duration={1}
-                            className="count-up-text font-bold"
-                            delay={1}
-                        />
-                        <p>year old Software Engineering Student based in Mashhad, Iran.</p>
-                    </div>
-                    <div className="text-[1.4rem] sm:text-2xl mb-8">
-                        <div className="leading-relaxed">
+                    <div className="sm:text-right text-[45px] sm:text-[50px] font-medium leading-[1.25]">
+                        <span className="inline-flex items-baseline">
                             <span>
-                                I specialize in Frontend Engineering, focusing on building{' '}
+                                I'm a&nbsp;
+                            </span>
+                            <CountUp
+                                from={0}
+                                to={21}
+                                separator=","
+                                direction="up"
+                                duration={1}
+                                className="count-up-text font-bold whitespace-nowrap"
+                                delay={1}
+                            />
+                            <span className='whitespace-nowrap'>&nbsp;year old</span>
+                        </span>
+                        <p className='text-[40px]'>student based in</p>
+                        <p className='text-4xl'>Mashhad, Iran.</p>
+                    </div>
+                    <div className="text-[1.5rem] sm:text-[25px] mb-8">
+                        <div className="leading-[1.55]">
+                            <span>
+                                I'm studying Web Development and enjoy building{' '}
                                 <LayoutGroup>
                                     <motion.span className="inline-flex items-baseline" layout>
                                         <RotatingText

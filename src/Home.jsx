@@ -1,10 +1,19 @@
 import { MdArrowForward } from "react-icons/md";
+import { useEffect, useState } from 'react';
 import TextType from './animations/TextType';
 import GlassSurface from './animations/GlassSurface';
 import DotGrid from './animations/DotGrid';
 import { Link } from 'react-scroll';
 
 const Home = () => {
+    const [showSubtitle, setShowSubtitle] = useState(false);
+
+    useEffect(() => {
+        // Delay to start fade after typing animation
+        const timer = setTimeout(() => setShowSubtitle(true), 3200);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div
             name="home"
@@ -63,16 +72,16 @@ const Home = () => {
                         className="sm:text-6xl md:text-7xl font-normal text-[#ddcabf] name drop-shadow-lg"
                     />
                 </span>
-                <p className="text-2xl sm:text-4xl md:text-5xl font-bold text-yellow-600 drop-shadow-md">I'm a Frontend Developer.</p>
-                <p className="text-[#be3e46] text-center hidden md:block">
+                <p className={`text-2xl sm:text-4xl md:text-5xl font-bold text-yellow-600 drop-shadow-md transition-opacity duration-[1500ms] ${showSubtitle ? 'opacity-100' : 'opacity-0'}`}>I'm a Web Developer.</p>
+                {/* <p className="text-[#be3e46] text-center hidden md:block">
                     <span className="text-5xl relative" style={{ right: '3.05em', top: '-0.1em' }}>^</span>
                     <span className="text-lg relative" style={{ right: '10.15em', top: '-0.2em' }}>future</span>
-                </p>
+                </p> */}
 
                 {/* Projects Button */}
                 <div>
                     <button className="text-white rounded-full py-3 text-center items-center justify-center
-                    group hover:border-[#be3e46] transition-transform duration-300 hover:scale-110 hover:font-semibold cursor-target md:mt-[-4rem] mt-5">
+                    group hover:border-[#be3e46] transition-transform duration-300 hover:scale-110 hover:font-semibold cursor-target mt-5">
                         <Link
                             to="projects"
                             duration={500}
