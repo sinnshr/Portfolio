@@ -11,7 +11,7 @@ const Footer = () => {
                         <span className="text-gray-400 text-lg sm:text-base">by me</span>
                     </div>
                     <p className="text-gray-500 text-sm">
-                        © 2025 All rights reserved.
+                        © 2026 All rights reserved.
                     </p>
                 </div>
             </div>
