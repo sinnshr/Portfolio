@@ -1,13 +1,25 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { FaPhp, FaReact, FaChevronLeft, FaChevronRight, FaEthereum } from "react-icons/fa";
+import { FaPhp, FaReact, FaChevronLeft, FaChevronRight, FaEthereum, FaNode } from "react-icons/fa";
 import { SiJavascript, SiTailwindcss, SiSolidity } from "react-icons/si";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 const DEFAULT_ITEMS = [
     {
+        title: "Dana AI Assistant",
+        description: "A Persian AI assistant that helps students generate flashcards, quizzes and ask questions about the uploaded file/digital textbook. Built with React, Node.js, Express and PostgreSQL.",
+        id: 1,
+        icons: [
+            { icon: FaReact, color: "text-blue-400" },
+            { icon: FaNode, color: "text-lime-500" },
+            { icon: BiLogoPostgresql, color: "text-blue-500" },
+        ],
+        githubUrl: "https://dana-ai-9ge0.onrender.com/"
+    },
+    {
         title: "Vira Online Bookstore",
         description: "A web-based bookstore management system built with PHP, JavaScript, and Tailwind CSS. Users can browse a collection of books, add books to their cart, and place orders seamlessly.",
-        id: 1,
+        id: 2,
         icons: [
             { icon: FaPhp, color: "text-blue-500" },
             { icon: SiJavascript, color: "text-yellow-400 rounded" },
@@ -18,7 +30,7 @@ const DEFAULT_ITEMS = [
     {
         title: "Focus App",
         description: "A productivity application developed using React and Tailwind CSS. It enables users to manage tasks, schedule events on a calendar, and boost focus with an integrated Pomodoro timer.",
-        id: 2,
+        id: 3,
         icons: [
             { icon: FaReact, color: "text-blue-400" },
             { icon: SiTailwindcss, color: "text-cyan-400" }
@@ -28,7 +40,7 @@ const DEFAULT_ITEMS = [
     {
         title: "Fund Me",
         description: "A decentralized crowdfunding platform powered by Solidity and Ethereum. Users can create fundraising campaigns and contribute to projects securely on the blockchain.",
-        id: 3,
+        id: 4,
         icons: [
             { icon: SiSolidity, color: "text-gray-500" },
             { icon: FaEthereum, color: "text-indigo-500" }
@@ -259,7 +271,7 @@ export default function Carousel({
                                         rel="noopener noreferrer"
                                         className="inline-block px-8 sm:px-6 py-3 sm:py-1.5 mb-4 bg-yellow-600 text-white rounded-full font-bold sm:font-normal whitespace-nowrap hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 transform hover:scale-105 shadow-lg cursor-target text-lg sm:text-[16px]"
                                     >
-                                        View On GitHub
+                                        {item.id === 1 ? "View Live Demo" : "View On GitHub"}
                                     </a>
                                 </div>
                             </motion.div>
