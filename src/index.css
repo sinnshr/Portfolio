@@ -10,7 +10,7 @@
 }
 
 body {
-    @apply font-inter;
+    @apply font-bricolage;
     @apply bg-[#060010];
 }
 
@@ -19,7 +19,7 @@ body {
 }
 
 .cursor {
-    @apply font-inter;
+    @apply font-bricolage;
 }
 
 /* Add background styling */

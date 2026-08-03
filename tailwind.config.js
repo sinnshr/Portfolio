@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
-        bitcount: ['Bitcount', 'sans-serif']
+        bitcount: ['Bitcount', 'sans-serif'],
+        bricolage: ['Bricolage Grotesque', 'sans-serif']
       },
       animation: {
         'grid-move': 'gridMove 20s linear infinite',
