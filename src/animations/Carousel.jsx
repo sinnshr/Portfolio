@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useMotionValue, useTransform } from "motion/react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { FaPhp, FaReact, FaChevronLeft, FaChevronRight, FaEthereum, FaNode } from "react-icons/fa";
 import { SiJavascript, SiTailwindcss, SiSolidity } from "react-icons/si";
 import { BiLogoPostgresql } from "react-icons/bi";
@@ -179,7 +179,7 @@ export default function Carousel({
                 }}
                 className={`absolute left-[-60px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-md hidden sm:flex items-center justify-center transition-all duration-200 group ${!loop && currentIndex === 0
                     ? 'bg-white/5 border-white/10 text-white/30 cursor-not-allowed'
-                    : 'text-white/80 hover:text-white hover:scale-105 cursor-target'
+                    : 'text-white/80 hover:text-white hover:scale-105'
                     }`}
                 disabled={!loop && currentIndex === 0}
             >
@@ -269,7 +269,7 @@ export default function Carousel({
                                         href={item.githubUrl}
                                         target='_blank'
                                         rel="noopener noreferrer"
-                                        className="inline-block px-8 sm:px-6 py-3 sm:py-1.5 mb-4 bg-yellow-600 text-white rounded-full font-bold sm:font-normal whitespace-nowrap hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 transform hover:scale-105 shadow-lg cursor-target text-lg sm:text-[16px]"
+                                        className="inline-block px-8 sm:px-6 py-3 sm:py-1.5 mb-4 bg-[#5732F0]/50 text-white rounded-full font-bold sm:font-normal whitespace-nowrap hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 transform hover:scale-105 shadow-lg  text-lg sm:text-[16px]"
                                     >
                                         {item.id === 1 ? "View Live Demo" : "View On GitHub"}
                                     </a>
@@ -289,7 +289,7 @@ export default function Carousel({
                                 className={`h-3 w-3 rounded-full cursor-pointer transition-colors duration-150 ${currentIndex % items.length === index
                                     ? round
                                         ? "bg-white"
-                                        : "bg-[#9228d8]"
+                                        : "bg-indigo-500"
                                     : round
                                         ? "bg-[#555]"
                                         : "bg-[#9b9b9b] opacity-50"
@@ -316,7 +316,7 @@ export default function Carousel({
                 }}
                 className={`absolute right-[-60px] top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full backdrop-blur-md hidden sm:flex items-center justify-center transition-all duration-200 group ${!loop && currentIndex === carouselItems.length - 1
                     ? 'bg-white/5 border-white/10 text-white/30 cursor-not-allowed'
-                    : 'text-white/80 hover:text-white hover:scale-105 cursor-target'
+                    : 'text-white/80 hover:text-white hover:scale-105'
                     }`}
                 disabled={!loop && currentIndex === carouselItems.length - 1}
             >

@@ -1,5 +1,5 @@
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import htmlImg from '../assets/html.png';
 import cssImg from '../assets/css.png';
 import jsImg from '../assets/javascript.png';
@@ -10,6 +10,19 @@ import laravelImg from '../assets/laravel-framework.png';
 import bootstrapImg from '../assets/bootstrap-framework.png';
 import gitImg from '../assets/git.png';
 import phpImg from '../assets/php.png';
+
+const DEFAULT_ITEMS = [
+    { image: htmlImg, text: "HTML5" },
+    { image: cssImg, text: "CSS3" },
+    { image: jsImg, text: "JavaScript" },
+    { image: reactImg, text: "React" },
+    { image: tailwindImg, text: "Tailwind CSS" },
+    { image: mysqlImg, text: "mySQL" },
+    { image: phpImg, text: "PHP" },
+    { image: laravelImg, text: "Laravel" },
+    { image: bootstrapImg, text: "Bootstrap" },
+    { image: gitImg, text: "Git" }
+];
 
 function debounce(func, wait) {
     let timeout;
@@ -296,13 +309,13 @@ class Media {
             }
         }
         this.scale = this.screen.height / 1500;
-        this.plane.scale.y = (this.viewport.height * (400 * this.scale)) / this.screen.height;
-        this.plane.scale.x = (this.viewport.width * (400 * this.scale)) / this.screen.width;
+        this.plane.scale.y = (this.viewport.height * (850 * this.scale)) / this.screen.height;
+        this.plane.scale.x = (this.viewport.width * (850 * this.scale)) / this.screen.width;
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
         this.padding = 2;
         this.width = this.plane.scale.x + this.padding;
         this.widthTotal = this.width * this.length;
-        this.x = this.width * this.index;
+        this.x = this.width * this.index - this.widthTotal / 3;
     }
 }
 
@@ -323,6 +336,7 @@ class App {
         document.documentElement.classList.remove("no-js");
         this.container = container;
         this.scrollSpeed = scrollSpeed;
+        this.autoScrollSpeed = scrollSpeed * 0.2;
         this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
         this.onCheckDebounce = debounce(this.onCheck, 200);
         this.createRenderer();
@@ -331,6 +345,9 @@ class App {
         this.onResize();
         this.createGeometry();
         this.createMedias(items, bend, textColor, borderRadius, fontSize);
+        this.scroll.current = 0;
+        this.scroll.target = 0;
+        this.scroll.last = 0;
         this.update();
         this.addEventListeners();
         this.customHeight = height;
@@ -352,24 +369,13 @@ class App {
     createGeometry() {
         this.planeGeometry = new Plane(this.gl, {
             heightSegments: 50,
-            widthSegments: 100,
+            widthSegments: 150,
         });
     }
     createMedias(items, bend = 1, textColor, borderRadius, fontSize) {
-        const defaultItems = [
-            { image: htmlImg, text: "HTML5" },
-            { image: cssImg, text: "CSS3" },
-            { image: jsImg, text: "JavaScript" },
-            { image: reactImg, text: "React" },
-            { image: tailwindImg, text: "Tailwind CSS" },
-            { image: mysqlImg, text: "mySQL" },
-            { image: phpImg, text: "PHP" },
-            { image: laravelImg, text: "Laravel" },
-            { image: bootstrapImg, text: "Bootstrap" },
-            { image: gitImg, text: "Git" }
-        ];
-        const galleryItems = items && items.length ? items : defaultItems;
-        this.mediasImages = galleryItems.concat(galleryItems);
+        const galleryItems = items && items.length ? items : DEFAULT_ITEMS;
+        this.baseItemsCount = galleryItems.length;
+        this.mediasImages = galleryItems.concat(galleryItems, galleryItems);
         this.medias = this.mediasImages.map((data, index) => {
             return new Media({
                 geometry: this.planeGeometry,
@@ -434,6 +440,7 @@ class App {
         }
     }
     update() {
+        this.scroll.target += this.autoScrollSpeed;       
         this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
         const direction = this.scroll.current > this.scroll.last ? "right" : "left";
         if (this.medias) {
@@ -487,11 +494,21 @@ export default function CircularGallery({
     height = 600,
 }) {
     const containerRef = useRef(null);
+
     useEffect(() => {
         const app = new App(containerRef.current, { items, bend, textColor, borderRadius, fontSize, scrollSpeed, scrollEase, height });
         return () => {
             app.destroy();
         };
     }, [items, bend, textColor, borderRadius, fontSize, scrollSpeed, scrollEase, height]);
-    return <div className="w-full overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef} style={{ height }} />;
+
+    return (
+        <div className="relative pb-4 rounded-[1.75rem] overflow-hidden border border-white/10 bg-slate-950/80 shadow-[0_20px_80px_-30px_rgba(0,0,0,0.8)]">
+            <div
+                className="w-full overflow-hidden cursor-grab active:cursor-grabbing"
+                ref={containerRef}
+                style={{ height }}
+            />
+        </div>
+    );
 }

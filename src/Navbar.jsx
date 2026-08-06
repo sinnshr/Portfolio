@@ -15,7 +15,7 @@ const Navbar = () => {
       <GlassSurface width={480}
         height={50}
         borderRadius={24}
-        className="hidden md:flex cursor-target cursor-pointer">
+        className="hidden md:flex cursor-pointer">
         <ul className="hidden md:flex">
           <li >
             {/* react-scroll Component */}

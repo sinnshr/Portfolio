@@ -1,28 +1,28 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import TargetCursor from './animations/TargetCursor';
+// import TargetCursor from './animations/TargetCursor';
 
 const Contact = () => {
   return (
     <div name="contact" className="w-full h-screen text-gray-300 relative overflow-hidden bg-transparent">
       <div className="relative z-10 flex flex-col justify-center items-center w-full h-full px-4 pointer-events-none">
-        <TargetCursor
+        {/* <TargetCursor
           spinDuration={2}
           hideDefaultCursor={true}
-        />
-        <h1 className="text-5xl sm:text-7xl font-bold mb-12 text-center text-white drop-shadow-lg tracking-tight cursor-target">
-          Contact <span className="text-purple-400">Me</span>
+        /> */}
+        <h1 className="mt-6 text-4xl sm:text-4xl inline-flex rounded-full bg-[#5732F0]/25 px-4 py-2 mb-5 font-semibold uppercase tracking-[0.3em] text-indigo-300">
+          Contact Me
         </h1>
-        <div className="flex flex-row items-center gap-4 sm:gap-8 bg-slate-800/60 rounded-xl p-5 sm:px-16 sm:py-10 shadow-xl backdrop-blur-md">
+        <div className="flex flex-row items-center gap-4 sm:gap-8 bg-slate-800/60 rounded-xl p-5 sm:px-10 sm:py-8 shadow-xl backdrop-blur-md">
           <a
             href="mailto:sajedeshirkhani22@gmail.com"
-            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out cursor-target focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl hidden sm:flex"
+            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out  focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl hidden sm:flex"
           >
             Click
           </a>
           {/* Changed button for small screens */}
           <a
             href="mailto:sajedeshirkhani22@gmail.com"
-            className="pointer-events-auto px-10 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out cursor-target focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl flex sm:hidden"
+            className="pointer-events-auto px-10 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out  focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl flex sm:hidden"
           >
             Tap
           </a>
@@ -46,15 +46,15 @@ const Contact = () => {
                 }, 1500);
               });
             }}
-            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-yellow-600 hover:text-purple-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400 cursor-target text-2xl sm:text-3xl"
+            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-indigo-600 hover:text-purple-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400  text-2xl sm:text-3xl"
             type="button"
           >
             Copy
           </button>
         </div>
         <p className="mt-8 text-gray-400 text-lg text-center select-all">
-          <a href='https://github.com/sinnshr' className="pointer-events-auto text-gray-400 hover:text-purple-300 transition duration-300 ease-in-out inline-block px-2 text-3xl"><FaGithub className="cursor-target" /></a>
-          <a href='https://www.linkedin.com/in/sajede-shirkhani-4268b125b' className="pointer-events-auto text-gray-400 hover:text-purple-300 transition duration-300 ease-in-out inline-block px-2 text-3xl"><FaLinkedin className="cursor-target" /></a>
+          <a href='https://github.com/sinnshr' className="pointer-events-auto text-gray-400 hover:text-purple-300 transition duration-300 ease-in-out inline-block px-2 text-3xl"><FaGithub className="" /></a>
+          <a href='https://www.linkedin.com/in/sajede-shirkhani-4268b125b' className="pointer-events-auto text-gray-400 hover:text-purple-300 transition duration-300 ease-in-out inline-block px-2 text-3xl"><FaLinkedin className="" /></a>
         </p>
       </div>
     </div>

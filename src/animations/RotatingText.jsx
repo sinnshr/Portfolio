@@ -177,7 +177,7 @@ const RotatingText = forwardRef((props, ref) => {
         >
             {/* Background morphing element */}
             <motion.div
-                className="absolute inset-1 bg-purple-700/70 rounded-md -z-10"
+                className="absolute inset-0 bg-[#5732F0]/25 rounded-full -z-10"
                 layout
                 layoutId="background-morph"
                 transition={{

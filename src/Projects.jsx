@@ -6,17 +6,8 @@ const Projects = () => {
         <div name="projects" className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center px-2 sm:px-6 lg:px-12 xl:px-24 py-16">
             {/* Projects Title */}
             <div className="w full md:w-1/3 h-full flex flex-col items-center justify-center text-white text-left ">
-                <ScrollFloat
-                    animationDuration={3}
-                    ease="back.inOut(2)"
-                    scrollStart="center bottom+=40%"
-                    scrollEnd="bottom bottom-=40%"
-                    stagger={0.2}
-                    containerClassName="text-5xl sm:text-7xl font-bold border-b-4 border-yellow-600 mb-8 lg:mb-5 whitespace-nowrap"
-                >
-                    Projects
-                </ScrollFloat>
-                <p className="text-base w-2/3 leading-relaxed bg-gradient-to-r from-purple-300 to-purple-200 text-transparent bg-clip-text hidden lg:flex">
+                <p className='mb-8 lg:mb-5 whitespace-nowrap mt-6 text-4xl sm:text-4xl inline-flex rounded-full bg-[#5732F0]/25 px-4 py-2 font-semibold uppercase tracking-[0.3em] text-indigo-300'>Projects</p>
+                <p className="text-xl w-2/3 bg-gradient-to-r from-purple-300 to-purple-200 text-transparent bg-clip-text hidden lg:flex">
                     Explore my latest projects showcasing various technologies and development skills.
                 </p>
             </div>

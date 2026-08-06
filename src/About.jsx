@@ -1,5 +1,5 @@
 import CountUp from './animations/CountUp';
-import SplitText from "./animations/SplitText";
+// import SplitText from "./animations/SplitText";
 import RotatingText from './animations/RotatingText';
 import { motion, LayoutGroup } from 'framer-motion'; // Add LayoutGroup
 
@@ -16,22 +16,8 @@ const About = () => {
             className="w-full h-screen text-gray-300 z-0 relative overflow-hidden"
         >
             <div className="flex flex-col justify-center items-center w-full h-full">
-                <div className="max-w-[1000px] w-full grid grid-cols-2 gap-8">
-                    <div className="sm:text-right pb-8 pl-4">
-                        <SplitText
-                            text="About Me"
-                            className="text-5xl md:text-7xl font-bold inline border-b-4 border-yellow-600 cursor-target whitespace-nowrap"
-                            delay={100}
-                            duration={2}
-                            ease="elastic.out(1,0.3)"
-                            splitType="chars"
-                            from={{ opacity: 0, y: 30 }}
-                            to={{ opacity: 1, y: 0 }}
-                            threshold={0}
-                            rootMargin="-50px"
-                            textAlign="center"
-                        />
-                    </div>
+                <div className="max-w-[1000px] grid grid-cols-2 gap-8">
+                    <div className="mt-6 text-4xl sm:text-4xl inline-flex rounded-full bg-[#5732F0]/25 px-4 py-2 font-semibold uppercase tracking-[0.3em] text-indigo-200 text-center">About Me</div>
                 </div>
                 <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4">
                     <div className="sm:text-right text-[45px] sm:text-[50px] font-medium leading-[1.25]">
@@ -61,7 +47,7 @@ const About = () => {
                                     <motion.span className="inline-flex items-baseline" layout>
                                         <RotatingText
                                             texts={words}
-                                            mainClassName="rotating-text-main text-white px-2 cursor-target"
+                                            mainClassName="rotating-text-main text-white px-2 "
                                             staggerFrom={"last"}
                                             initial={{ y: "100%" }}
                                             animate={{ y: 0 }}
