@@ -1,4 +1,3 @@
-import ScrollFloat from './animations/ScrollFloat';
 import Carousel from './animations/Carousel'
 
 const Projects = () => {

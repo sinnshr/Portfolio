@@ -1,6 +1,6 @@
 import { MdArrowForward } from "react-icons/md";
 import { FiDownload } from "react-icons/fi";
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import TextType from './animations/TextType';
 import GlassSurface from './animations/GlassSurface';
 // import DotGrid from './animations/DotGrid';
@@ -8,13 +8,13 @@ import Aurora from './animations/Aurora';
 import { Link } from 'react-scroll';
 
 const Home = () => {
-    const [showSubtitle, setShowSubtitle] = useState(false);
+    // const [showSubtitle, setShowSubtitle] = useState(false);
 
-    useEffect(() => {
-        // Delay to start fade after typing animation
-        const timer = setTimeout(() => setShowSubtitle(true), 3200);
-        return () => clearTimeout(timer);
-    }, []);
+    // useEffect(() => {
+    //     // Delay to start fade after typing animation
+    //     const timer = setTimeout(() => setShowSubtitle(true), 3200);
+    //     return () => clearTimeout(timer);
+    // }, []);
 
     return (
         <div

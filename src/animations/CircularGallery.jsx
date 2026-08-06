@@ -1,5 +1,5 @@
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import htmlImg from '../assets/html.png';
 import cssImg from '../assets/css.png';
 import jsImg from '../assets/javascript.png';
