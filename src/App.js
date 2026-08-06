@@ -6,7 +6,7 @@ import Projects from "./Projects";
 import Skills from "./Skills";
 import Contact from './Contact';
 import Footer from './Footer';
-import ParticlesBg from './animations/ParticlesBg';
+import AuroraBg from './animations/AuroraBg';
 
 function App() {
     const mainRef = useRef(null);
@@ -31,13 +31,13 @@ function App() {
 
     return (
         <div ref={mainRef} className="relative overflow-hidden min-h-screen w-full">
-            <div
+            {/* <div
                 className="absolute inset-0 z-0 pointer-events-none"
                 style={{
                     background: `radial-gradient(circle at ${gradientPosition}, rgba(200,130,255,0.85) 0%, rgba(128,0,255,0.5) 15%, rgba(128,0,255,0.15) 30%, transparent 40%)`,
                     filter: 'blur(40px)',
                 }}
-            />
+            /> */}
             <Navbar />
             <Home />
             <About />
@@ -47,10 +47,10 @@ function App() {
             <Projects />
 
             {/* Shared Particles Background */}
-            <ParticlesBg>
+            <AuroraBg>
                 <Contact />
                 <Footer />
-            </ParticlesBg>
+            </AuroraBg>
         </div>
     );
 }
