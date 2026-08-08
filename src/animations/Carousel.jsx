@@ -3,6 +3,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { FaPhp, FaReact, FaChevronLeft, FaChevronRight, FaEthereum, FaNode } from "react-icons/fa";
 import { SiJavascript, SiTailwindcss, SiSolidity } from "react-icons/si";
 import { BiLogoPostgresql } from "react-icons/bi";
+import { Yii } from "@dev.icons/react";
 
 const DEFAULT_ITEMS = [
     {
@@ -38,9 +39,19 @@ const DEFAULT_ITEMS = [
         githubUrl: "https://github.com/sinnshr/Focus-App"
     },
     {
+        title: "Yii2 Blog",
+        description: "A simple blog application built with Yii2 framework. It allows users to create, edit, and delete blog posts. Rbac is implemented to manage user permissions and access control.",
+        id: 4,
+        icons: [
+            { icon: Yii, color: "text-blue-500" },
+            { icon: SiTailwindcss, color: "text-cyan-400" }
+        ],
+        githubUrl: "https://github.com/sinnshr/yii2-blog"
+    },
+    {
         title: "Fund Me",
         description: "A decentralized crowdfunding platform powered by Solidity and Ethereum. Users can create fundraising campaigns and contribute to projects securely on the blockchain.",
-        id: 4,
+        id: 5,
         icons: [
             { icon: SiSolidity, color: "text-gray-500" },
             { icon: FaEthereum, color: "text-indigo-500" }
