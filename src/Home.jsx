@@ -116,7 +116,14 @@ const Home = () => {
                                 <FiDownload className="mr-3 " />
                             </span>
                             Download Resume
-                            <a href="/Sajede_Shirkhani_Resume.pdf" download className="absolute inset-0"></a>
+                            <a
+                                href="/Sajede_Shirkhani_Resume.pdf"
+                                download
+                                aria-label="Download resume"
+                                className="absolute inset-0"
+                            >
+                                <span className="sr-only">Download resume</span>
+                            </a>
                         </GlassSurface>
                     </button>
                 </div>
