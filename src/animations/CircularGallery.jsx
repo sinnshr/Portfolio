@@ -10,6 +10,11 @@ import laravelImg from '../assets/laravel-framework.png';
 import bootstrapImg from '../assets/bootstrap-framework.png';
 import gitImg from '../assets/git.png';
 import phpImg from '../assets/php.png';
+import nodejs from '../assets/nodejs.png';
+import postgresql from '../assets/postgreSQL.png';
+import prisma from '../assets/prisma.png';
+import vite from '../assets/vite.png';
+import yii2 from '../assets/yii2.png';
 
 const DEFAULT_ITEMS = [
     { image: htmlImg, text: "HTML5" },
@@ -21,7 +26,12 @@ const DEFAULT_ITEMS = [
     { image: phpImg, text: "PHP" },
     { image: laravelImg, text: "Laravel" },
     { image: bootstrapImg, text: "Bootstrap" },
-    { image: gitImg, text: "Git" }
+    { image: gitImg, text: "Git" },
+    { image: nodejs, text: "Node.js" },
+    { image: postgresql, text: "PostgreSQL" },
+    { image: prisma, text: "Prisma ORM" },
+    { image: vite, text: "Vite" },
+    { image: yii2, text: "Yii2" }
 ];
 
 function debounce(func, wait) {
