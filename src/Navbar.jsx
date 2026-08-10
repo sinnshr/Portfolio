@@ -1,139 +1,69 @@
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-// import Logo from './assets/logo.png';
-// import Social from './Social'
-import GlassSurface from './animations/GlassSurface';
+import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa";
+import { BiLogoGmail } from "react-icons/bi";
 import { Link } from 'react-scroll';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const handleClick = () => setNav(!nav);
+  const links = [
+    { label: 'Home', to: 'home' },
+    { label: 'About', to: 'about' },
+    { label: 'Skills', to: 'skills' },
+    { label: 'Projects', to: 'projects' },
+    { label: 'Contact', to: 'contact' },
+  ];
 
   return (
-    <div className="fixed w-full h-[80px] flex justify-center items-center px-4 bg-transparent text-white z-20">
-      {/* Main Menu */}
-      <GlassSurface width={480}
-        height={50}
-        borderRadius={24}
-        className="hidden md:flex cursor-pointer">
-        <ul className="hidden md:flex">
-          <li >
-            {/* react-scroll Component */}
+    <div className="fixed left-0 top-0 z-50 w-full px-4 pt-4 text-white">
+      <div className="page-shell flex items-center justify-center">
+        <nav className="hidden items-center rounded-full border border-white/10 bg-slate-950/50 px-3 py-2 shadow-[0_0_30px_rgba(99,102,241,0.12)] backdrop-blur-xl md:flex">
+          {links.map((link) => (
             <Link
-              to="home"
-              duration={500}
+              key={link.to}
+              to={link.to}
               smooth={true}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="about"
               duration={500}
-              smooth={true}
+              className="cursor-pointer rounded-full px-4 py-2 text-sm font-medium text-slate-200 transition hover:bg-white/5 hover:text-white"
             >
-              About
+              {link.label}
             </Link>
-          </li>
-          <li>
-            <Link
-              to="skills"
-              duration={500}
-              smooth={true}
-            >
-              Skills
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="projects"
-              duration={500}
-              smooth={true}
-            >
-              Projects
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="contact"
-              duration={500}
-              smooth={true}
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </GlassSurface>
+          ))}
+        </nav>
+      </div>
 
-      {/* Hamburger Menu Button */}
-      <div
-        onClick={handleClick}
-        className="md:hidden z-20 cursor-pointer p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
-        style={{ position: 'fixed', top: '1rem', left: '1.2rem' }}
+      <button
+        type="button"
+        onClick={() => setNav(!nav)}
+        className="fixed left-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-slate-950/60 text-slate-100 shadow-lg backdrop-blur-md md:hidden"
+        aria-label="Toggle navigation"
       >
-        {!nav ? <FaBars size={30} /> : <FaTimes size={30} />}
-      </div>
+        {!nav ? <FaBars size={18} /> : <FaTimes size={18} />}
+      </button>
 
-      {/* Expanded Ham Menu */}
-      <div className={!nav ? "hidden" : "absolute top-0 left-0 w-full h-screen bg-[#060010]/95 backdrop-blur-md flex flex-col justify-center items-center z-5 text-center"}>
-        <ul className="space-y-8">
-          <li className="py-4 text-2xl">
-            <Link
-              to="home"
-              duration={500}
-              smooth={true}
-              onClick={() => setNav(false)}
-            >
-              Home
-            </Link>
-          </li>
-          <li className="py-4 text-2xl">
-            <Link
-              to="about"
-              duration={500}
-              smooth={true}
-              onClick={() => setNav(false)}
-            >
-              About
-            </Link>
-          </li>
-          <li className="py-4 text-2xl">
-            <Link
-              to="skills"
-              duration={500}
-              smooth={true}
-              onClick={() => setNav(false)}
-            >
-              Skills
-            </Link>
-          </li>
-          <li className="py-4 text-2xl">
-            <Link
-              to="projects"
-              duration={500}
-              smooth={true}
-              onClick={() => setNav(false)}
-            >
-              Projects
-            </Link>
-          </li>
-          <li className="py-4 text-2xl">
-            <Link
-              to="contact"
-              duration={500}
-              smooth={true}
-              onClick={() => setNav(false)}
-            >
-              Contact
-            </Link>
+      <div className={nav ? "fixed inset-0 z-40 flex items-center justify-center bg-[#050816]/90 backdrop-blur-xl md:hidden" : "hidden"}>
+        <ul className="space-y-7 text-center text-2xl text-slate-100">
+          {links.map((link) => (
+            <li key={link.to}>
+              <Link
+                to={link.to}
+                smooth={true}
+                duration={500}
+                onClick={() => setNav(false)}
+                className="transition hover:text-indigo-300"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+          <li className="flex items-center justify-center gap-4 pt-4 text-3xl text-slate-300">
+            <a href="mailto:sajedeshirkhani22@gmail.com" aria-label="Email"><BiLogoGmail /></a>
+            <a href="https://github.com/sinnshr" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/sajede-shirkhani-4268b125b" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
           </li>
         </ul>
       </div>
-
-      {/* <div> <img src={Logo} alt="Logo" className="w-12" style={{ width: "70px" }} /> </div> */}
     </div>
-  )
-}
+  );
+};
 
 export default Navbar
