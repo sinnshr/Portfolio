@@ -9,10 +9,6 @@
 
     body {
         @apply font-bricolage bg-[#050816] text-slate-100 antialiased;
-        background-image:
-            radial-gradient(circle at top, rgba(99, 102, 241, 0.25), transparent 30%),
-            radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.18), transparent 25%),
-            linear-gradient(180deg, #050816 0%, #0b1020 100%);
         overflow-x: hidden;
         width: 100%;
     }

@@ -6,7 +6,6 @@ import Projects from "./Projects";
 import Skills from "./Skills";
 import Contact from './Contact';
 import Footer from './Footer';
-import AuroraBg from './animations/AuroraBg';
 
 function App() {
     const mainRef = useRef(null);
@@ -46,11 +45,8 @@ function App() {
             </div>
             <Projects />
 
-            {/* Shared Particles Background */}
-            <AuroraBg>
                 <Contact />
                 <Footer />
-            </AuroraBg>
         </div>
     );
 }

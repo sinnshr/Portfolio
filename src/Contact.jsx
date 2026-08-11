@@ -1,64 +1,85 @@
+import React, { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-// import TargetCursor from './animations/TargetCursor';
+import { MdOutlineMail } from "react-icons/md";
+import Folder from './animations/Folder'
 
 const Contact = () => {
-  return (
-    <div name="contact" className="w-full h-screen text-gray-300 relative overflow-hidden bg-transparent">
-      <div className="relative z-10 flex flex-col justify-center items-center w-full h-full px-4 pointer-events-none">
-        {/* <TargetCursor
-          spinDuration={2}
-          hideDefaultCursor={true}
-        /> */}
-        <h1 className="mt-6 text-4xl sm:text-4xl inline-flex rounded-full bg-[#5732F0]/25 px-4 py-2 mb-5 font-semibold uppercase tracking-[0.3em] text-indigo-300">
-          Contact Me
-        </h1>
-        <div className="flex flex-row items-center gap-4 sm:gap-8 bg-slate-800/60 rounded-xl p-5 sm:px-10 sm:py-8 shadow-xl backdrop-blur-md">
-          <a
-            href="mailto:sajedeshirkhani22@gmail.com"
-            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out  focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl hidden sm:flex"
-          >
-            Click
-          </a>
-          {/* Changed button for small screens */}
-          <a
-            href="mailto:sajedeshirkhani22@gmail.com"
-            className="pointer-events-auto px-10 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-purple-700 hover:text-purple-200 transition duration-300 ease-in-out  focus:outline-none focus:ring-2 focus:ring-purple-400 text-2xl sm:text-3xl flex sm:hidden"
-          >
-            Tap
-          </a>
-          <span className="text-gray-400 font-medium text-2xl">or</span>
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText("sajedeshirkhani22@gmail.com").then(() => {
-                const alertDiv = document.createElement("div");
-                alertDiv.textContent = "Email copied to clipboard!";
-                alertDiv.className =
-                  "fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-cyan-600 text-white px-8 py-3 rounded-lg shadow-lg text-xl font-medium z-50 opacity-95 transition-opacity";
-                document.body.appendChild(alertDiv);
+  const email = "sajedeshirkhani22@gmail.com";
+  const githubUrl = "https://github.com/sinnshr";
+  const linkedinUrl = "https://www.linkedin.com/in/sajede-shirkhani-4268b125b";
+  const [toast, setToast] = useState("");
+  const [form, setForm] = useState({ name: "", from: "", message: "" });
 
-                setTimeout(() => {
-                  alertDiv.classList.add("opacity-0");
-                  setTimeout(() => {
-                    if (alertDiv.parentNode) {
-                      alertDiv.parentNode.removeChild(alertDiv);
-                    }
-                  }, 300);
-                }, 1500);
-              });
-            }}
-            className="pointer-events-auto px-8 py-4 rounded-lg bg-slate-500 text-white font-semibold shadow-md hover:bg-indigo-600 hover:text-purple-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-400  text-2xl sm:text-3xl"
-            type="button"
-          >
-            Copy
-          </button>
-        </div>
-        <p className="mt-8 text-gray-400 text-lg text-center select-all">
-          <a href='https://github.com/sinnshr' className="pointer-events-auto text-gray-400 hover:text-purple-300 transition duration-300 ease-in-out inline-block px-2 text-3xl"><FaGithub className="" /></a>
-          <a href='https://www.linkedin.com/in/sajede-shirkhani-4268b125b' className="pointer-events-auto text-gray-400 hover:text-purple-300 transition duration-300 ease-in-out inline-block px-2 text-3xl"><FaLinkedin className="" /></a>
-        </p>
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setToast("Email copied to clipboard!");
+      setTimeout(() => setToast(""), 1600);
+    } catch (err) {
+      setToast("Copy failed");
+      setTimeout(() => setToast(""), 1600);
+    }
+  };
+
+  const contactItems = [
+
+    // Github item
+    <a
+      key="github"
+      href={githubUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="flex min-h-full min-w-full flex-col items-center justify-center rounded-lg bg-slate-900/95 text-white border-slate-500 border-2"
+    >
+      <FaGithub className="text-3xl" />
+      <span className="mt-1 text-[10px] uppercase tracking-[0.2em] text-slate-300">GitHub</span>
+    </a>,
+
+    // LinkedIn item
+    <a
+      key="linkedin"
+      href={linkedinUrl}
+      target="_blank"
+      rel="noreferrer"
+      className="flex min-h-full min-w-full flex-col items-center justify-center rounded-lg bg-sky-100/95 text-sky-800 border-2 border-sky-800"
+    >
+      <FaLinkedin className="text-3xl" />
+      <span className="mt-1 text-[10px] uppercase tracking-[0.2em] text-sky-600">LinkedIn</span>
+    </a>,
+
+    // Email item
+    <button
+      key="email"
+      type="button"
+      onClick={copyEmail}
+      className="flex min-h-full min-w-full flex-col items-center justify-center rounded-lg bg-violet-300 text-purple-950 border-2 border-purple-950"
+    >
+      <MdOutlineMail className="text-3xl" />
+      <span className="mt-1 text-[10px] uppercase tracking-[0.2em] text-purple-950">Email</span>
+    </button>,
+    
+  ];
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  return (
+    <section name="contact" className="relative w-full py-10 sm:pt-28 sm:pb-0">
+      <div className="mx-auto max-w-4xl text-center">
+        <span className="section-label">Contact</span>
+        <h2 className="mt-6 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Let’s build something memorable.</h2>
       </div>
-    </div>
-  )
-}
+
+      {/* Folder Container */}
+      <div style={{ height: '450px', position: 'relative' }} className="flex items-center justify-center">
+        <Folder size={2} color="#4f46e5" className="custom-folder" items={contactItems} />
+      </div>
+
+      {toast && (
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50">
+          {toast}
+        </div>
+      )}
+    </section>
+  );
+};
 
 export default Contact;
