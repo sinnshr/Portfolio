@@ -358,9 +358,22 @@ class App {
         this.scroll.current = 0;
         this.scroll.target = 0;
         this.scroll.last = 0;
-        this.update();
+        this.raf = 0;
         this.addEventListeners();
         this.customHeight = height;
+    }
+
+    start() {
+        if (this.raf === 0) {
+            this.raf = window.requestAnimationFrame(this.update.bind(this));
+        }
+    }
+
+    stop() {
+        if (this.raf !== 0) {
+            window.cancelAnimationFrame(this.raf);
+            this.raf = 0;
+        }
     }
     createRenderer() {
         this.renderer = new Renderer({ alpha: true });
@@ -450,7 +463,7 @@ class App {
         }
     }
     update() {
-        this.scroll.target += this.autoScrollSpeed;       
+        this.scroll.target += this.autoScrollSpeed;
         this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
         const direction = this.scroll.current > this.scroll.last ? "right" : "left";
         if (this.medias) {
@@ -477,7 +490,7 @@ class App {
         window.addEventListener("touchend", this.boundOnTouchUp);
     }
     destroy() {
-        window.cancelAnimationFrame(this.raf);
+        this.stop();
         window.removeEventListener("resize", this.boundOnResize);
         window.removeEventListener("mousewheel", this.boundOnWheel);
         window.removeEventListener("wheel", this.boundOnWheel);
@@ -504,11 +517,34 @@ export default function CircularGallery({
     height = 600,
 }) {
     const containerRef = useRef(null);
+    const appRef = useRef(null);
 
     useEffect(() => {
-        const app = new App(containerRef.current, { items, bend, textColor, borderRadius, fontSize, scrollSpeed, scrollEase, height });
+        appRef.current = new App(containerRef.current, { items, bend, textColor, borderRadius, fontSize, scrollSpeed, scrollEase, height });
+        const io = typeof IntersectionObserver !== 'undefined'
+            ? new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        appRef.current?.start();
+                    } else {
+                        appRef.current?.stop();
+                    }
+                },
+                { threshold: 0 }
+            )
+            : null;
+
+        if (containerRef.current) {
+            if (io) {
+                io.observe(containerRef.current);
+            } else {
+                appRef.current?.start();
+            }
+        }
+
         return () => {
-            app.destroy();
+            io?.disconnect();
+            appRef.current?.destroy();
         };
     }, [items, bend, textColor, borderRadius, fontSize, scrollSpeed, scrollEase, height]);
 

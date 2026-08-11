@@ -113,6 +113,7 @@ export default function Aurora(props) {
     propsRef.current = props;
 
     const ctnDom = useRef(null);
+    const rafRef = useRef(0);
 
     useEffect(() => {
         const ctn = ctnDom.current;
@@ -167,9 +168,8 @@ export default function Aurora(props) {
         const mesh = new Mesh(gl, { geometry, program });
         ctn.appendChild(gl.canvas);
 
-        let animateId = 0;
         const update = t => {
-            animateId = requestAnimationFrame(update);
+            rafRef.current = requestAnimationFrame(update);
             const { time = t * 0.01, speed = 1.0 } = propsRef.current;
             program.uniforms.uTime.value = time * speed * 0.1;
             program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
@@ -181,20 +181,51 @@ export default function Aurora(props) {
             });
             renderer.render({ scene: mesh });
         };
-        animateId = requestAnimationFrame(update);
+
+        const startLoop = () => {
+            if (rafRef.current === 0) {
+                rafRef.current = requestAnimationFrame(update);
+            }
+        };
+
+        const stopLoop = () => {
+            if (rafRef.current !== 0) {
+                cancelAnimationFrame(rafRef.current);
+                rafRef.current = 0;
+            }
+        };
+
+        const observer = typeof IntersectionObserver !== 'undefined'
+            ? new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        startLoop();
+                    } else {
+                        stopLoop();
+                    }
+                },
+                { threshold: 0 }
+            )
+            : null;
+
+        if (observer) {
+            observer.observe(ctn);
+        } else {
+            startLoop();
+        }
 
         resize();
 
         return () => {
-            cancelAnimationFrame(animateId);
+            stopLoop();
+            observer?.disconnect();
             window.removeEventListener('resize', resize);
             if (ctn && gl.canvas.parentNode === ctn) {
                 ctn.removeChild(gl.canvas);
             }
             gl.getExtension('WEBGL_lose_context')?.loseContext();
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [amplitude]);
+    }, [amplitude, blend]);
 
     return <div ref={ctnDom} className="w-full h-full" />;
 }
