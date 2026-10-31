@@ -28,7 +28,7 @@ const About = () => {
                             </span>
                             <CountUp
                                 from={0}
-                                to={21}
+                                to={22}
                                 separator=","
                                 direction="up"
                                 duration={1}
